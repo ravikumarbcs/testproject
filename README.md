@@ -20,7 +20,29 @@ Terraform Code for Providers
 
 ```Terraform
 
-Code here
+Sample code
+
+"mainSteps": [
+      {
+         "name": "StopEC2Instances",
+         "action": "aws:executeAwsApi",
+         "inputs": {
+            "Service": "ssm",
+            "Api": "StartAutomationExecution",
+            "DocumentName": "AWS-StopEC2Instance",
+            "TargetParameterName": "InstanceId",
+            "Targets": [
+               {
+                  "Key": "tag:Name",
+                  "Values": [
+                     "{{ Name }}"
+                  ]
+               }
+            ]
+         }
+      }
+   ]
+}
 
 ```
 
